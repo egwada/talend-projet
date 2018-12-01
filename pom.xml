@@ -3,8 +3,8 @@
  <modelVersion>4.0.0</modelVersion>
 
 
- <groupId>com.agrica.dsdp.talend</groupId>
- <artifactId>orcc</artifactId>
+ <groupId>fr.synaltic.test.talend</groupId>
+ <artifactId>llap</artifactId>
  <version>0.0.1-SNAPSHOT</version>
 
 
