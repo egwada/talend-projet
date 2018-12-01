@@ -42,7 +42,7 @@
         <plugin>
             <groupId>org.talend</groupId>
             <artifactId>ci.builder</artifactId>
-            <version>6.5.1</version>
+            <version>6.4.1</version>
             <executions>
                 <execution>
                     <phase>generate-sources</phase>
