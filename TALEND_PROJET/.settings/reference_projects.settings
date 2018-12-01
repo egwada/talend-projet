@@ -1,0 +1,6 @@
+{
+  "reference_projects" : [ {
+    "project" : "TALEND_REF",
+    "branch" : "master"
+  } ]
+}
