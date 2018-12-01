@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+
+ <groupId>com.agrica.dsdp.talend</groupId>
+ <artifactId>orcc</artifactId>
+ <version>0.0.1-SNAPSHOT</version>
+
+
+    <scm>
+        <connection>scm:git:https://github.com/egwada/talend-projet.git</connection>
+        <developerConnection>scm:git:https://github.com/egwada/talend-projet.git</developerConnection>
+        <url>https://github.com/egwada/talend-projet.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+
+<properties>
+    <!-- Required. Commandline application workspace and Studio path, only for local(script) mode -->
+    <!-- <commandline.workspace>/DATA/jenkins/talend-workspace</commandline.workspace> -->  
+    <commandline.workspace>${project.basedir}</commandline.workspace>  
+    <product.path>/opt/Talend-7.1.1/cmdline/studio</product.path>
+    <!-- Optional. Specify target directory where generated sources will be stored -->
+    <projectsTargetDirectory>${project.build.directory}/workspace</projectsTargetDirectory>  
+   
+    <!-- Optional. Specify version for the artifact to be built. Can be set for each Job independently -->
+    <deploy.version>${project.version}</deploy.version>
+</properties>
+
+<dependencies>
+    <dependency>
+        <groupId>fr.synaltic.test.talend</groupId>
+        <artifactId>projet-tld</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+
+<build>
+    <plugins>
+	<!-- get project reference -->
+	 <plugin>
+          <groupId>com.github.gastaldi</groupId>
+          <artifactId>git-checkout-plugin</artifactId>
+          <version>1.0.0-SNAPSHOT</version>
+          <executions>
+             <execution>
+                <id>get-project-refrence</id>
+                <phase>generate-sources</phase>
+                <goals>
+                   <goal>git-checkout</goal>
+                </goals>
+             </execution>
+          </executions>
+          <configuration>
+             <!-- The git repository to use -->
+             <!-- <repository>git@github.com:openshiftio/appdev-documentation.git</repository> -->
+	     <repository>https://github.com/egwada/taled-ref.git</repository> <!-- à corriger -->
+             <!-- The paths to checkout -->
+             <paths>
+                <path>${project.basedir}</path>
+             </paths>
+          </configuration>
+       </plugin>
+
+	<!-- genarate talend source -->
+        <plugin>
+            <groupId>org.talend</groupId>
+            <artifactId>ci.builder</artifactId>
+            <version>6.5.1</version>
+            <executions>
+                <execution>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <!-- local(script) mode -->
+                        <goal>local-generate</goal>
+                    </goals>
+                    <configuration>
+                        <!-- Optional. Specify CommandLine user -->
+                        <commandlineUser>jobbuilder@talend.com</commandlineUser>
+                        <!-- Optional. Jvm Parameters for local(script) mode -->
+                        <!-- <jvmArguments>-ea -Xms512m -Xmx1300m -XX:+CMSClassUnloadingEnabled -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=20 -XX:+HeapDumpOnOutOfMemoryError</jvmArguments> -->
+                        <!-- Optional. Parameter used to filter on specific Job status (TEST, DEV, PROD, etc)  -->
+                        <!-- <itemFilter>(status=TEST)or(status=PROD)or(status="")</itemFilter> -->
+                        <itemFilter>(type=process)</itemFilter>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+	<!-- ajouter les sources générer par talend au projet en train d'être compiler -->
+	<plugin>
+	    <groupId>org.codehaus.mojo</groupId>
+	    <artifactId>build-helper-maven-plugin</artifactId>
+	    <version>3.0.0</version>
+	    <executions>
+		<execution>
+		    <id>add-talend-genarated-source</id>
+		    <phase>generate-sources</phase>
+		    <goals>
+		        <goal>add-source</goal>
+		    </goals>
+		    <configuration>
+		        <sources>
+		            <source>${project.build.directory}/workspace</source>
+		        </sources>
+		    </configuration>
+		</execution>
+	    </executions>
+	</plugin>
+
+    </plugins>
+</build>
+
+
+</project>
