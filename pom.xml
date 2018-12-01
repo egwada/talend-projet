@@ -121,9 +121,9 @@
             <url>http://192.168.1.40:8181/repository/maven-central/</url>
         </pluginRepository>
         <pluginRepository>
-            <id>talend-custom-libs-release</id>
-            <name>talend-custom-libs-release</name>
-            <url>http://192.168.1.40:8181/repository/talend-custom-libs-release/</url>
+            <id>thirdparty</id>
+            <name>thirdparty</name>
+            <url>http://192.168.1.40:8181/repository/thirdparty/</url>
         </pluginRepository>
 </pluginRepositories>
 </project>
