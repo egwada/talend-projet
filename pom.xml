@@ -20,7 +20,7 @@
     <!-- Required. Commandline application workspace and Studio path, only for local(script) mode -->
     <!-- <commandline.workspace>/DATA/jenkins/talend-workspace</commandline.workspace> -->  
     <commandline.workspace>${project.basedir}</commandline.workspace>  
-    <product.path>/opt/Talend-7.1.1/cmdline/studio</product.path>
+    <product.path>/var/lib/jenkins/cmdline/studio</product.path>
     <!-- Optional. Specify target directory where generated sources will be stored -->
     <projectsTargetDirectory>${project.build.directory}/workspace</projectsTargetDirectory>  
    
