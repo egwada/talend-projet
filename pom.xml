@@ -110,13 +110,19 @@
 	</plugin>
 
     </plugins>
- <repositories>
-      <repository>
-         <id>localrepository</id>
-         <url>file:///var/lib/jenkins/.m2/repository/repo</url>
-      </repository>
-   </repositories>
 </build>
 
-
+<pluginRepositories>
+    <!-- everything through Maven Central Proxy -->
+        <pluginRepository>
+            <id>Central</id>
+            <name>Central</name>
+            <url>http://192.168.1.40:8181/repository/maven-central/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>talend-custom-libs-release</id>
+            <name>talend-custom-libs-release</name>
+            <url>http://192.168.1.40:8181/repository/talend-custom-libs-release/</url>
+        </pluginRepository>
+</pluginRepositories>
 </project>
