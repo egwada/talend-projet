@@ -62,28 +62,6 @@
                 </execution>
             </executions>
         </plugin>
-
-	<!-- ajouter les sources générer par talend au projet en train d'être compiler -->
-	<plugin>
-	    <groupId>org.codehaus.mojo</groupId>
-	    <artifactId>build-helper-maven-plugin</artifactId>
-	    <version>3.0.0</version>
-	    <executions>
-		<execution>
-		    <id>add-talend-genarated-source</id>
-		    <phase>generate-sources</phase>
-		    <goals>
-		        <goal>add-source</goal>
-		    </goals>
-		    <configuration>
-		        <sources>
-		            <source>${project.build.directory}/workspace</source>
-		        </sources>
-		    </configuration>
-		</execution>
-	    </executions>
-	</plugin>
-
     </plugins>
 </build>
 
