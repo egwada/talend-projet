@@ -39,7 +39,8 @@
 <build>
     <plugins>
 	<!-- get project reference -->
-	 <plugin>gastaldi/git-sparse-checkout-plugin/1.0.0-SNAPSHOT/
+	<!-- gastaldi/git-sparse-checkout-plugin/1.0.0-SNAPSHOT -->
+	 <plugin>
           <groupId>com.github.gastaldi</groupId>
           <artifactId>git-checkout-plugin</artifactId>
           <version>1.0.0</version>
