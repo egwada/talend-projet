@@ -39,7 +39,7 @@
 <build>
     <plugins>
 	<!-- get project reference -->
-	 <plugin>
+	 <plugin>gastaldi/git-sparse-checkout-plugin/1.0.0-SNAPSHOT/
           <groupId>com.github.gastaldi</groupId>
           <artifactId>git-checkout-plugin</artifactId>
           <version>1.0.0-SNAPSHOT</version>
@@ -110,6 +110,12 @@
 	</plugin>
 
     </plugins>
+ <repositories>
+      <repository>
+         <id>localrepository</id>
+         <url>file:///var/lib/jenkins/.m2/repository/repo</url>
+      </repository>
+   </repositories>
 </build>
 
 
